@@ -1,4 +1,4 @@
-### **CodeSync Pro**
+### **2. CodeSync README**
 
 A real-time collaborative code editor with distributed state management and remote code execution.
 
@@ -7,7 +7,7 @@ A real-time collaborative code editor with distributed state management and remo
 * **Frontend:** React, Monaco Editor (VS Code Engine)
 * **Backend:** Node.js, Socket.io
 * **Persistence:** Redis (Docker)
-* **Execution:** Piston API (Sandboxed)
+* **Execution:** Piston API (Sandboxed Proxy)
 
 **Key Features**
 
@@ -16,18 +16,32 @@ A real-time collaborative code editor with distributed state management and remo
 * **Concurrency Control:** Implements version tracking to reject conflicting edits and prevent race conditions.
 * **Remote Execution:** Proxies code to a sandboxed environment to run 20+ languages securely.
 
-**Setup & Run**
+**How to Run**
+
+**1. Prerequisites**
+
+* Docker (Required for Redis)
+* Node.js (v16+)
+
+**2. Infrastructure Setup**
 
 ```bash
-# 1. Start Redis
-docker run -d -p 6379:6379 redis
+# Start Redis container (Runs on port 6379)
+docker run -d -p 6379:6379 --name codesync-redis redis
 
-# 2. Install Dependencies
+```
+
+**3. Application Startup**
+
+```bash
+# Install dependencies
 npm install
 
-# 3. Start Server
-npm start
+# Start the Development Server
+# Runs backend on :3001 and frontend proxy on :3000
+npm run dev
 
 ```
 
 ---
+
